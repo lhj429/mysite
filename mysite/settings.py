@@ -31,13 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'main',
+    'guestbook',
+    'board',
+    'user',
+    'mathfilters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'main'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +135,6 @@ STATICFILES_DIRS = (
 
 # STATIC_URL = '/static/'
 STATIC_URL = '/assets/'
+
+# session
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
