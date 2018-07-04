@@ -5,19 +5,16 @@
 {% endblock %}
 
 {% block content %}
-
+			{% for i in board %}
 			<div id="board" class="board-form">
 				<table class="tbl-ex">
 					<tr>
 						<th colspan="2">글보기</th>
 					</tr>
-
-					{% for i in board %}
 					<tr>
 						<td class="label">제목</td>
 						<td>{{ i.title }}</td>
 					</tr>
-
 					<tr>
 						<td class="label">내용</td>
 						<td>
@@ -26,12 +23,12 @@
 							</div>
 						</td>
 					</tr>
-					{% endfor %}
-
 				</table>
 				<div class="bottom">
 					<a href="/board">글목록</a>
-					<a href="">글수정</a>
+					<a href="/board/modifyform?id={{ i.id }}">글수정</a>
 				</div>
+
 			</div>
+			{% endfor %}
 {% endblock %}
