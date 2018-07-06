@@ -43,6 +43,7 @@ urlpatterns = [
     path('board/delete', board_views.delete),
     path('board/modifyform', board_views.modifyform),
     path('board/modify', board_views.modify),
+    path('board/search', board_views.search),
 
     path('admin/', admin.site.urls)
 ]
