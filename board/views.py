@@ -28,29 +28,19 @@ def write(request):
     return HttpResponseRedirect('/board')
 
 def viewform(request):
-    if (request.GET['mdf'] is None):
-        board = Board.objects.filter(id=request.GET['id']).get()
-        board.hit += 1
-        board.save()
+    try:
+        if request.session['authuser'] is not None:
+            if(request.GET['mdf']==1):
+                board = Board.objects.filter(id=request.GET['id']).get()
+                board.hit += 1
+                board.save()
 
-    board = Board.objects.filter(id=request.GET['id']).values()
-    data = {'board': board}
+            board = Board.objects.filter(id=request.GET['id']).values()
+            data = {'board': board}
 
-    return render(request, 'board/view.html', data)
-
-    # try:
-    #     if request.session['authuser'] is not None:
-    #         if(request.GET['mdf']==1):
-    #             board = Board.objects.filter(id=request.GET['id']).get()
-    #             board.hit += 1
-    #             board.save()
-    #
-    #         board = Board.objects.filter(id=request.GET['id']).values()
-    #         data = {'board': board}
-    #
-    #     return render(request, 'board/view.html', data)
-    # except:
-    #     return HttpResponseRedirect('/user/loginform')
+        return render(request, 'board/view.html', data)
+    except:
+        return HttpResponseRedirect('/user/loginform')
 
 def delete(request):
     try:
